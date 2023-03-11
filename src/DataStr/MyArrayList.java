@@ -88,5 +88,42 @@ public class MyArrayList {
 		
 		//elementCounter++;
 	}
+	
+	//deff of add / tas pats nosaukums bet ir cits paramets un parametru skaits
+	public void add(char newElement, int index) throws Exception
+	{
+		//verify the index - is it appropriate
+		if(index >= 0 && index <= elementCounter) {
+			//verify if the index is equal to element counter --> add()
+			if(index == elementCounter) {
+				add(newElement);
+				
+			}
+			else {
+				//verify isfull
+				if(isFull()) {
+					increaseArray();
+				}
+			}
+			//copy from the end to the right side using the index
+			//for cikls
+			for(int i = elementCounter; i > index ; i--) {
+				elements[i] = elements[i - 1];
+			}
+			//add new element in the specified index
+			elements[index] = newElement;
+		//increase elementCounter
+			elementCounter++;
+		
+			}
+		//izmet izņemumu
+		else {
+			throw (new Exception("wrong index"));
+			}
+		
+	
+	
+	
 
+		}
 }
