@@ -70,5 +70,23 @@ public class MyArrayList {
 		elements = newElements;
 		arraySize = newArraySize;
 	}
+	
+	// definition of function
+	public void add(char newElement) {
+		//verify if the array is full
+		if(isFull()) {
+			//call an increasearray function
+			increaseArray();
+		}
+		
+		// add the new element in array
+		// increase element counter
+		
+		//nosakuma pievienp elementu un tad palielina
+		//[++elements] <-- palielona pirms pievieno
+		elements[elementCounter++] = newElement;
+		
+		//elementCounter++;
+	}
 
 }
