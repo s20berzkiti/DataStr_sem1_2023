@@ -45,5 +45,30 @@ public class MyArrayList {
 		return elementCounter;
 		
 	}
+	
+	//private lai klients netiek klat
+	private void increaseArray() {
+		//cast uz int lai cuz . or round var izmantot
+		int newArraySize = (arraySize > 100)? (int)(arraySize * 1.5) : arraySize * 2;
+		
+		//long version
+		/*if(arraySize < 100) {
+			int newArraySize = arraySize * 2;
+		}
+		else {
+			int newArraySize = (int)(arraySize * 1.5);
+		}
+		*/
+		//create new array
+		char[] newElements = new char[newArraySize];
+		
+		//cpoy
+		for(int i = 0; i < elementCounter; i++) {
+			newElements[i] = elements[i];
+		}
+		//change reference
+		elements = newElements;
+		arraySize = newArraySize;
+	}
 
 }
