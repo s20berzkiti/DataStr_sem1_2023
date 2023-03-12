@@ -194,8 +194,8 @@ public class MyArrayList {
 			
 			char[] nextNeighbours = new char[howManySearchedElements];
 			
-			for(int i = 0; i < elementCounter; i++) {
-				int indexForNeighbours = 0;
+			int indexForNeighbours = 0;
+			for(int i = 0; i < elementCounter-1; i++) {
 				if(elements[i] == inputElement) {
 					nextNeighbours[indexForNeighbours] = elements[i + 1];
 					indexForNeighbours++;
@@ -273,6 +273,8 @@ public class MyArrayList {
 		arraySize = DEFAULT_ARRAY_SIZE;
 		elementCounter = 0;
 		elements = new char[arraySize];
+		//run the garbage collector
+		System.gc();
 		
 		}
 		
