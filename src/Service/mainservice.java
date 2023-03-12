@@ -38,6 +38,14 @@ public class mainservice {
 			charList.add('d'); //d
 			charList.print();
 			
+			System.out.println("----------");
+			MyArrayList fileList = getArrayElementsFromFile("recourses/numbers.txt");
+			
+			fileList.print();
+			fileList.add('z');
+			fileList.remove(2);
+			fileList.print();
+			
 		}
 		catch (Exception e) {
 			System.out.println(e);
