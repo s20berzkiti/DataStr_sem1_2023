@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import DataStr.MyArrayList;
 import DataStr.SortingType;
+import model.Student;
+import model.Faculty;
 
 public class mainservice {
 
@@ -54,6 +56,13 @@ public class mainservice {
 			stringList.remove(1);
 			stringList.print();
 			
+			MyArrayList<Student> studentList = new MyArrayList<>();
+			studentList.add(new Student("Jais", "Brzins", Faculty.EPF, "123456-123456"));
+			studentList.add(new Student("Laine", "Juka", Faculty.ITF, "123456-123455"));
+			studentList.add(new Student("Jas", "Bns", Faculty.TSF, "654321-123456"));
+			studentList.print();
+			studentList.add(new Student("Gatis", "Nejaukais", Faculty.ITF, "123412-123412"));
+			studentList.print();
 			
 			
 			
