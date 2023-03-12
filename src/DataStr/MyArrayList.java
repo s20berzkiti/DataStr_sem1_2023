@@ -178,12 +178,42 @@ public class MyArrayList {
 	}
 	
 	// retrieve next neightbour
+	public char[] retrieveNextNeighbours(char inputElement) throws Exception {
+		//true case
+		if(search(inputElement)) {
+			int howManySearchedElements = 0;
+			for(int i = 0; i < elementCounter - 1; i++) {
+				if(elements[i] == inputElement) {
+					howManySearchedElements++;
+				}
+			}
+			//check in case the input element is the last in the row (doesnt have a neighbour)
+			if(elements[elementCounter-1] == inputElement) {
+				howManySearchedElements--;
+			}
+			
+			char[] nextNeighbours = new char[howManySearchedElements];
+			
+			for(int i = 0; i < elementCounter; i++) {
+				int indexForNeighbours = 0;
+				if(elements[i] == inputElement) {
+					nextNeighbours[indexForNeighbours] = elements[i + 1];
+					indexForNeighbours++;
+				}
+			}
+			return nextNeighbours;
+		}
+		//false case
+		else {
+			throw (new Exception("Input element is not found"));
+		}
+	}
 	
 	//sort
 	
 	//print
 	public void print() throws Exception{
-		if(isEmpty) {
+		if(isEmpty()) {
 			throw (new Exception("Tukss"));
 		}
 		for(int i = 0; i < elementCounter; i++) {
