@@ -46,6 +46,17 @@ public class mainservice {
 			fileList.remove(2);
 			fileList.print();
 			
+			MyArrayList<String> stringList = new MyArrayList<>();
+			stringList.add("Karīna");
+			stringList.add("Jānis");
+			stringList.add("Žanis", 0);
+			stringList.print();
+			stringList.remove(1);
+			stringList.print();
+			
+			
+			
+			
 		}
 		catch (Exception e) {
 			System.out.println(e);

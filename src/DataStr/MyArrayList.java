@@ -169,7 +169,7 @@ public class MyArrayList<T> {
 	public boolean search(T inputElement) {
 		//does element exist
 		for(int i = 0; i < elementCounter; i++) {
-			if(elements[i.equals(inputElement)) { 
+			if(elements[i].equals(inputElement)) { 
 				return true;
 			}
 		}
