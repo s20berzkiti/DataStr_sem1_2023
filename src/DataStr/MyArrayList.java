@@ -120,10 +120,55 @@ public class MyArrayList {
 		else {
 			throw (new Exception("wrong index"));
 			}
+	
+		}
+	
+	//deffine the delete function
+	public void remove(int index) throws Exception {
+		//check if there is smthn to delete / is empty
+		if(isEmpty()) {
+			throw (new Exception("Nothing to delete"));
+		}
 		
-	
-	
+		//verify the index - is it not appropriate
+		if(index < 0 || index >= elementCounter) {
+			throw (new Exception("Wrong index"));
+			
+		}
+		// when deleting copy to the left side / copy from index to end
+				// initialize the last element with NUL symbol (int value is 0)
+			
+		for(int i = index; i < elementCounter - 1; i++) {
+			elements[i] = elements[i + 1];
+		}
+		elements[elementCounter-1] = 0; //NUL symbol
+		
+		// decrease elementCounter
+		elementCounter--;
+		
+		//optimized --> elements[--elementCounter] = 0;
+			
+		}
+		
+	}
 	
 
-		}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
