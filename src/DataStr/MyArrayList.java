@@ -177,6 +177,28 @@ public class MyArrayList {
 		
 	}
 	
+	// retrieve next neightbour
+	
+	//sort
+	
+	//print
+	public void print() throws Exception{
+		if(isEmpty) {
+			throw (new Exception("Tukss"));
+		}
+		for(int i = 0; i < elementCounter; i++) {
+			System.out.print(elements[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	//make empty
+	public void makeEmpty() {
+		arraySize = DEFAULT_ARRAY_SIZE;
+		elementCounter = 0;
+		elements = new char[arraySize];
+		
+	}
 	
 	
 	
