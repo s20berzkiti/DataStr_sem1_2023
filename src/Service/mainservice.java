@@ -63,6 +63,7 @@ public class mainservice {
 			studentList.print();
 			studentList.add(new Student("Gatis", "Nejaukais", Faculty.ITF, "123412-123412"));
 			studentList.print();
+			System.out.println(Arrays.toString(studentList.sort(SortingType.DESC)));
 			
 			
 			

@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	//1. variables 
 	private long id;
 	private String name;
@@ -121,4 +121,17 @@ public class Student {
 		return "" + id + ": " + name + " " + surname + ", " + personCode + ", " +faculty;
 	}
 	//5. additional functions
+
+	@Override
+	public int compareTo(Student o) {
+		if(surname.charAt(0) > o.surname.charAt(0)) {
+			return 1;
+		}
+		else if(surname.charAt(0) < o.surname.charAt(0)){
+			return -1;
+		}
+		else {
+			return 0;
+		}
+	}
 }
