@@ -182,7 +182,7 @@ public class MyArrayList {
 		//true case
 		if(search(inputElement)) {
 			int howManySearchedElements = 0;
-			for(int i = 0; i < elementCounter - 1; i++) {
+			for(int i = 0; i < elementCounter; i++) {
 				if(elements[i] == inputElement) {
 					howManySearchedElements++;
 				}
@@ -225,7 +225,7 @@ public class MyArrayList {
 			if(type == SortingType.ASC) {
 				for(int i = 0; i < elementCounter; i++) {
 					for(int j = 0; j < elementCounter; j++) {
-						if(sortArray[i] > sortArray[j]) {
+						if(sortArray[i] < sortArray[j]) {
 							//maina vietam ar tmp
 							char temp = sortArray[i];
 							sortArray[i] = sortArray[j];
@@ -238,7 +238,7 @@ public class MyArrayList {
 			else if(type == SortingType.DESC) {
 				for(int i = 0; i < elementCounter; i++) {
 					for(int j = 0; j < elementCounter; j++) {
-						if(sortArray[i] < sortArray[j]) {
+						if(sortArray[i] > sortArray[j]) {
 							//maina vietam ar tmp
 							char temp = sortArray[i];
 							sortArray[i] = sortArray[j];
@@ -254,15 +254,8 @@ public class MyArrayList {
 			
 			return sortArray;
 		}
-		
-		
+			
 	}
-	
-	
-	
-	
-	
-	
 	
 	//print
 	public void print() throws Exception{
@@ -281,7 +274,7 @@ public class MyArrayList {
 		elementCounter = 0;
 		elements = new char[arraySize];
 		
-	}
+		}
 		
 	}
 	
