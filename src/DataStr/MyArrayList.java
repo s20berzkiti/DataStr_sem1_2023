@@ -1,14 +1,14 @@
 package DataStr;
 
-public class MyArrayList {
-	private char[] elements;
+public class MyArrayList<T> {
+	private T[] elements;
 	private final int DEFAULT_ARRAY_SIZE = 6; //konstante
 	private int arraySize = DEFAULT_ARRAY_SIZE;
 	private int elementCounter = 0;
 	
 	//bez argumentu konstruktors
 	public MyArrayList() {
-		elements = new char[arraySize]; //masivs ar 6 šūnām
+		elements = (T[]) new Object[arraySize]; //masivs ar 6 šūnām
 	}
 	//args constructor
 	public MyArrayList(int inputArraySize) {
@@ -16,7 +16,7 @@ public class MyArrayList {
 			arraySize = inputArraySize;
 		}
 		
-		elements = new char[arraySize];
+		elements = (T[]) new Object[arraySize];
 	}
 	
 	//isEmpty function
@@ -60,7 +60,7 @@ public class MyArrayList {
 		}
 		*/
 		//create new array
-		char[] newElements = new char[newArraySize];
+		T[] newElements = (T[]) new Object[newArraySize];
 		
 		//cpoy
 		for(int i = 0; i < elementCounter; i++) {
@@ -72,7 +72,7 @@ public class MyArrayList {
 	}
 	
 	// definition of function
-	public void add(char newElement) {
+	public void add(T newElement) {
 		//verify if the array is full
 		if(isFull()) {
 			//call an increasearray function
@@ -90,7 +90,7 @@ public class MyArrayList {
 	}
 	
 	//deff of add / tas pats nosaukums bet ir cits paramets un parametru skaits
-	public void add(char newElement, int index) throws Exception
+	public void add(T newElement, int index) throws Exception
 	{
 		//verify the index - is it appropriate
 		if(index >= 0 && index <= elementCounter) {
@@ -136,12 +136,12 @@ public class MyArrayList {
 			
 		}
 		// when deleting copy to the left side / copy from index to end
-				// initialize the last element with NUL symbol (int value is 0)
+				// initialize the last element with NUL reference (int value is 0)
 			
 		for(int i = index; i < elementCounter - 1; i++) {
 			elements[i] = elements[i + 1];
 		}
-		elements[elementCounter-1] = 0; //NUL symbol
+		elements[elementCounter-1] = null; //NUL symbol
 		
 		// decrease elementCounter
 		elementCounter--;
@@ -151,7 +151,7 @@ public class MyArrayList {
 		}
 	
 	// define function retrieve
-	public char retrieve(int index) throws Exception{
+	public T retrieve(int index) throws Exception{
 		//check if there is smthn to retrieve / is empty
 		if(isEmpty()) {
 			throw (new Exception("Nothing to retrieve"));
@@ -166,10 +166,10 @@ public class MyArrayList {
 	}
 	
 	//define function search
-	public boolean search(char inputElement) {
+	public boolean search(T inputElement) {
 		//does element exist
 		for(int i = 0; i < elementCounter; i++) {
-			if(elements[i] == inputElement) { 
+			if(elements[i.equals(inputElement)) { 
 				return true;
 			}
 		}
@@ -178,25 +178,25 @@ public class MyArrayList {
 	}
 	
 	// retrieve next neightbour
-	public char[] retrieveNextNeighbours(char inputElement) throws Exception {
+	public T[] retrieveNextNeighbours(T inputElement) throws Exception {
 		//true case
 		if(search(inputElement)) {
 			int howManySearchedElements = 0;
 			for(int i = 0; i < elementCounter; i++) {
-				if(elements[i] == inputElement) {
+				if(elements[i].equals(inputElement)) {
 					howManySearchedElements++;
 				}
 			}
 			//check in case the input element is the last in the row (doesnt have a neighbour)
-			if(elements[elementCounter-1] == inputElement) {
+			if(elements[elementCounter-1].equals(inputElement)) {
 				howManySearchedElements--;
 			}
 			
-			char[] nextNeighbours = new char[howManySearchedElements];
+			T[] nextNeighbours = (T[]) new Object[howManySearchedElements];
 			
 			int indexForNeighbours = 0;
 			for(int i = 0; i < elementCounter-1; i++) {
-				if(elements[i] == inputElement) {
+				if(elements[i].equals(inputElement)) {
 					nextNeighbours[indexForNeighbours] = elements[i + 1];
 					indexForNeighbours++;
 				}
@@ -210,46 +210,33 @@ public class MyArrayList {
 	}
 	
 	//sort / bubble sort
-	public char[] sort(SortingType type) throws Exception {
+	public T[] sort(SortingType type) throws Exception {
 		
 		if(isEmpty()) {
 			throw (new Exception("Nothing to delete"));
 		}
 		else {
-			char[] sortArray = new char[elementCounter];
+			T[] sortArray = (T[]) new Object[elementCounter];
 			
 			for(int i = 0; i < elementCounter; i++) {
 				sortArray[i] = elements[i];
 			}
-			//ascending order
+			
+			int sortVariable = 1;
 			if(type == SortingType.ASC) {
-				for(int i = 0; i < elementCounter; i++) {
-					for(int j = 0; j < elementCounter; j++) {
-						if(sortArray[i] < sortArray[j]) {
-							//maina vietam ar tmp
-							char temp = sortArray[i];
-							sortArray[i] = sortArray[j];
-							sortArray[j] = temp;
-						}
-					}
-				}
-			}
-			//descending array
-			else if(type == SortingType.DESC) {
-				for(int i = 0; i < elementCounter; i++) {
-					for(int j = 0; j < elementCounter; j++) {
-						if(sortArray[i] > sortArray[j]) {
-							//maina vietam ar tmp
-							char temp = sortArray[i];
-							sortArray[i] = sortArray[j];
-							sortArray[j] = temp;
-						}
-					}
-				}
+				sortVariable = -1;
 			}
 			
-			else {
-				throw (new Exception("Sorting type is wrong"));
+			for(int i = 0; i < elementCounter; i++) {
+				for(int j = 0; j < elementCounter; j++) {
+					//if(sortArray[i] < sortArray[j]) {
+					if( ((Comparable) (sortArray[i])).compareTo(sortArray[j]) == - 1) {
+						//maina vietam ar tmp
+						T temp = sortArray[i];
+						sortArray[i] = sortArray[j];
+						sortArray[j] = temp;
+					}
+				}
 			}
 			
 			return sortArray;
@@ -272,7 +259,7 @@ public class MyArrayList {
 	public void makeEmpty() {
 		arraySize = DEFAULT_ARRAY_SIZE;
 		elementCounter = 0;
-		elements = new char[arraySize];
+		elements = (T[]) new Object[arraySize];
 		//run the garbage collector
 		System.gc();
 		
