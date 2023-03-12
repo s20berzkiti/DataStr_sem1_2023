@@ -149,6 +149,22 @@ public class MyArrayList {
 		//optimized --> elements[--elementCounter] = 0;
 			
 		}
+	
+	// define function retrieve
+	public char retrieve(int index) throws Exception{
+		//check if there is smthn to retrieve / is empty
+		if(isEmpty()) {
+			throw (new Exception("Nothing to retrieve"));
+			}
+		//verify index
+		if(index < 0 || index >= elementCounter) {
+			throw (new Exception("Wrong index"));
+			
+		}
+		//atgriež elementu pec indeksa
+		return elements[index];
+	}
+	
 		
 	}
 	
