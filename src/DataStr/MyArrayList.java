@@ -165,6 +165,25 @@ public class MyArrayList {
 		return elements[index];
 	}
 	
+	//define function search
+	public boolean search(char inputElement) {
+		//does element exist
+		for(int i = 0; i < elementCounter; i++) {
+			if(elements[i] == inputElement) { 
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	}
 	
