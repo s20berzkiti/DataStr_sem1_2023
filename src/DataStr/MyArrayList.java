@@ -230,7 +230,7 @@ public class MyArrayList<T> {
 			for(int i = 0; i < elementCounter; i++) {
 				for(int j = 0; j < elementCounter; j++) {
 					//if(sortArray[i] < sortArray[j]) {
-					if( ((Comparable) (sortArray[i])).compareTo(sortArray[j]) == - 1) {
+					if( ((Comparable) (sortArray[i])).compareTo(sortArray[j]) < 0 ) {
 						//maina vietam ar tmp
 						T temp = sortArray[i];
 						sortArray[i] = sortArray[j];
